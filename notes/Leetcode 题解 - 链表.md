@@ -151,7 +151,7 @@ public ListNode deleteDuplicates(ListNode head) {
 Given linked list: 1->2->3->4->5, and n = 2.
 After removing the second node from the end, the linked list becomes 1->2->3->5.
 ```
-
+* 注: 一次遍历找到倒数结点位置,倒数多少个就等于总数-正数多少个,那么设置快指针先遍历到正数的个数,然后设置慢指针,和快指针一起遍历到链表尾,这时慢指针的位置就是倒数的结点位置
 ```java
 public ListNode removeNthFromEnd(ListNode head, int n) {
     ListNode fast = head;
@@ -180,6 +180,7 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
 ```
 
 题目要求：不能修改结点的 val 值，O(1) 空间复杂度。
+* 注: 在需要返回首结点的场合,要新建结点作为头结点一直不变,直至链表完成更改,再将头结点所指向的首节点返回
 
 ```java
 public ListNode swapPairs(ListNode head) {
@@ -211,6 +212,7 @@ Output: 7 -> 8 -> 0 -> 7
 ```
 
 题目要求：不能修改原始链表。
+* 注:使用两个栈分别处理两个表达式,从栈顶不断取值相加,并将进位存储,用到下一位求和.
 
 ```java
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -249,7 +251,7 @@ private Stack<Integer> buildStack(ListNode l) {
 题目要求：以 O(1) 的空间复杂度来求解。
 
 切成两半，把后半段反转，然后比较两半是否相等。
-
+* 注:使用快慢指针,快指针一次遍历两个节点,慢指针一次一个节点,当快指针到结尾,慢指针正好到中间,将链表切成两个
 ```java
 public boolean isPalindrome(ListNode head) {
     if (head == null || head.next == null) return true;
@@ -268,6 +270,7 @@ private void cut(ListNode head, ListNode cutNode) {
         head = head.next;
     }
     head.next = null;
+    //注:java是值传递,虽然head是复制的引用,无法对原生head引用造成影响,但是可以对引用中的指针造成影响,这里就是将中间点的next指针置为空
 }
 
 private ListNode reverse(ListNode head) {
@@ -307,6 +310,7 @@ The input has been split into consecutive parts with size difference at most 1, 
 
 题目描述：把链表分隔成 k 部分，每部分的长度都应该尽可能相同，排在前面的长度应该大于等于后面的。
 
+* (这题跳过)
 ```java
 public ListNode[] splitListToParts(ListNode root, int k) {
     int N = 0;
